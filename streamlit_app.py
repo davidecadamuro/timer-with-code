@@ -14,8 +14,8 @@ st.markdown(
    div[data-testid="stStatusWidget"] div button {
         display: none;
         }
-        </style>
-""",
+    </style>
+    """,
     unsafe_allow_html=True,
 )
 
@@ -39,7 +39,7 @@ with st.form("my_form"):
     with col4:
         n4 = st.number_input("", value=None, min_value=0, max_value=9, step=1, placeholder="", key="n4")
 
-    code = st.form_submit_button("Submit")
+    code = st.form_submit_button("Übermitteln")
     # 6459
 
 ph = st.empty()
@@ -52,6 +52,8 @@ for secs in range(N, -1, -1):
         mm, ss = secs//60, secs%60
         if n1 == 6 and n2 == 4 and n3 == 5 and n4 == 9:
             ph.metric("Countdown", f"{mm:02d}:{ss:02d} - {'Countdown gestoppt'}")
+            time.sleep(5)
+            ph.header("Bombe entschärft, Zündschnur entfernen")
             break
         else:
             ph.metric("Countdown", f"{mm:02d}:{ss:02d}")        

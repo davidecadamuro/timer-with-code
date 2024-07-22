@@ -1,5 +1,5 @@
 [logger]
-level = "info"
+level = "error"
 messageFormat = "%(levelname)s %(asctime)s %(message)s"
 
 [client]
