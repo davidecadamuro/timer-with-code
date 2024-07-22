@@ -1,10 +1,12 @@
 import streamlit as st
 import time
 
+
 @st.cache_resource
 def create_list():
-    l = [40] #[5*60]
+    l = [10]  #[5*60]
     return l
+
 
 l = create_list()
 N = l[0]
@@ -26,27 +28,17 @@ with st.form("my_form"):
         n4 = st.number_input("", value=None, min_value=0, max_value=9, step=1, placeholder="", key="n4")
 
     code = st.form_submit_button("Submit")
-    #6459
-    # pco = st.empty()
-    # if(n1 == 6 and n2 == 4 and n3 == 5 and n4 == 9):
-    #     pco.write(
-    #         f"code is right {l}",
-
-    #     )
-    # else:
-    #     pco.write(
-    #         f"code is wrong {l}"
-    #     )
+    # 6459
 
 ph = st.empty()
 for secs in range(N, -1, -1):
-    if(secs == 0):
+    if secs == 0:
         ph.header("💥💥💥💥BOOOOM!!!💥💥💥💥")
         break
     else:
         l[0] = secs
         mm, ss = secs//60, secs%60
-        if(n1 == 6 and n2 == 4 and n3 == 5 and n4 == 9):
+        if n1 == 6 and n2 == 4 and n3 == 5 and n4 == 9:
             ph.metric("Countdown", f"{mm:02d}:{ss:02d} - {'Countdown gestoppt'}")
             break
         else:
