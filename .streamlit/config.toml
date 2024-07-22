@@ -1,0 +1,11 @@
+[logger]
+level = "info"
+messageFormat = "%(levelname)s %(asctime)s %(message)s"
+
+[client]
+toolbarMode = "minimal"
+showSidebarNavigation = false
+
+[theme]
+
+base = "dark"

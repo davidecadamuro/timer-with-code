@@ -4,8 +4,20 @@ import time
 
 @st.cache_resource
 def create_list():
-    l = [10]  #[5*60]
+    l = [15*60]
     return l
+
+
+st.markdown(
+    """
+    <style>
+   div[data-testid="stStatusWidget"] div button {
+        display: none;
+        }
+        </style>
+""",
+    unsafe_allow_html=True,
+)
 
 
 l = create_list()
