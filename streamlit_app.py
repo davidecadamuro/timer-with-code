@@ -1,5 +1,6 @@
 import streamlit as st
 import time
+import playsound as ps
 
 
 @st.cache_resource
@@ -25,10 +26,10 @@ N = l[0]
 
 st.title("💣💣💣 Das ist eine Bombe! 🧨🧨🧨")
 
-st.write(
-    "Um den Countdown zu stoppen, geben Sie den Code ein."
-)
 with st.form("my_form"):
+    st.write(
+        "Um den Countdown zu stoppen, geben Sie den Code ein."
+    )
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         n1 = st.number_input("", value=None, min_value=0, max_value=9, step=1, placeholder="", key="n1")
@@ -43,20 +44,26 @@ with st.form("my_form"):
     # 6459
 
 ph = st.empty()
-for secs in range(N, -1, -1):
-    if secs == 0:
-        ph.header("💥💥💥💥BOOOOM!!!💥💥💥💥")
+for secs in range(N, -2, -1):
+    if secs == -1:
+        st.header("💥💥💥💥BOOOOM!!!💥💥💥💥")
+        ps.playsound("sounds/explosion.wav")
         break
     else:
         l[0] = secs
         mm, ss = secs//60, secs%60
         if n1 == 6 and n2 == 4 and n3 == 5 and n4 == 9:
             ph.metric("Countdown", f"{mm:02d}:{ss:02d} - {'Countdown gestoppt'}")
-            time.sleep(5)
+            ps.playsound("sounds/countdown.aiff", True)
+            time.sleep(3)
             ph.header("Bombe entschärft, Zündschnur entfernen")
+            ps.playsound("sounds/zuendschnur.aiff", True)
+            time.sleep(1)
             break
         else:
-            ph.metric("Countdown", f"{mm:02d}:{ss:02d}")        
+            ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
+            ps.playsound("sounds/beep.wav", False)
             time.sleep(1)
+
 
     
